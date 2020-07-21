@@ -1,6 +1,6 @@
 <?php
 require_once '../conf/const.php';
-require_once '../model/function.php';
+require_once '../model/functions.php';
 
 session_start();
 
