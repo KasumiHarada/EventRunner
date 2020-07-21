@@ -14,14 +14,14 @@
 
     <form method="post" action="login_process.php" class="login_form mx-auto">
       <div class="form-group">
-        <label for="name">名前: </label>
-        <input type="text" name="name" id="name" class="form-control">
+        <label for="email">メールアドレス: </label>
+        <input type="email" name="email" id="email" class="form-control">
       </div>
       <div class="form-group">
         <label for="password">パスワード: </label>
         <input type="password" name="password" id="password" class="form-control">
       </div>
-      <input type="submit" value="ログイン" class="btn btn-primary">
+      <input type="submit" value="ログイン" class="btn btn-block btn-primary">
       <input type="hidden" name="token" value="<?php print $_SESSION['token'];?>">
     </form>
   </div>

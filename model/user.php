@@ -2,58 +2,57 @@
 require_once MODEL_PATH . 'functions.php';
 require_once MODEL_PATH . 'db.php';
 
-// // 送られてきたuserIDに一致するuser情報を取り出す
-// function get_user($db, $user_id){
-//   $sql = "
-//     SELECT
-//       user_id, 
-//       name,
-//       password,
-//       type
-//     FROM
-//       users
-//     WHERE
-//       user_id = ?
-//     LIMIT 1
-//   ";
+// 送られてきたuserIDに一致するuser情報を取り出す
+function get_user($db, $user_id){
+  $sql = "
+    SELECT
+      user_id, 
+      name,
+      password
+    FROM
+      users
+    WHERE
+      user_id = ?
+    LIMIT 1
+  ";
 
-//   return fetch_query($db, $sql, array($user_id));
-// }
+  return fetch_query($db, $sql, array($user_id));
+}
 
-// // nameに一致するユーザー情報をひとつ取得する
-// function get_user_by_name($db, $name){
-//   $sql = "
-//     SELECT
-//       user_id, 
-//       name,
-//       password,
-//       type
-//     FROM
-//       users
-//     WHERE
-//       name = ?
-//     LIMIT 1
-//   ";
+// nameに一致するユーザー情報をひとつ取得する
+function get_user_by_name($db, $email){
+  $sql = "
+    SELECT
+      user_id, 
+      name,
+      password,
+      email
+    FROM
+      users
+    WHERE
+      email = ?
+    LIMIT 1
+  ";
 
-//   return fetch_query($db, $sql, array($name));
-// }
+  return fetch_query($db, $sql, array($email));
+}
 
-// // nameに一致するユーザー情報をひとつ取得する→falseなら弾く。OKならsessionにuser_idを返す
-// function login_as($db, $name, $password){
-//   $user = get_user_by_name($db, $name);
-//   if($user === false || $user['password'] !== $password){
-//     return false;
-//   }
-//   set_session('user_id', $user['user_id']);
-//   return $user;
-// }
+// nameに一致するユーザー情報をひとつ取得する→falseなら弾く。OKならsessionにuser_idを返す
+function login_as($db, $email, $password){
+  $user = get_user_by_name($db, $email);
+  if($user === false || $user['password'] !== $password){
+    return false;
+  }
+  set_session('user_id', $user['user_id']);
+  return $user;
+}
 
-// // login済みのユーザーIDとパスワードをセッションから取得して返す
-// function get_login_user($db){
-//   $login_user_id = get_session('user_id');
+// login済みのユーザーIDとパスワードをセッションから取得して返す
+function get_login_user($db){
+  $login_user_id = get_session('user_id');
 
-//   return get_user($db, $login_user_id);
-// }
+  return get_user($db, $login_user_id);
+}
 
 // 送信されたユーザー情報に問題なければ、insert_user関数でユーザー情報をDBに登録する
 function regist_user($db, $name, $password, $password_confirmation) {
