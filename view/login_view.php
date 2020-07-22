@@ -7,10 +7,9 @@
 </head>
 <body>
   <?php include VIEW_PATH . 'templates/header.php'; ?>
+  <?php include VIEW_PATH . 'templates/messages.php'; ?>
   <div class="container">
     <h1>ログイン</h1>
-
-    <?php //include VIEW_PATH . 'templates/messages.php'; ?>
 
     <form method="post" action="login_process.php" class="login_form mx-auto">
       <div class="form-group">
