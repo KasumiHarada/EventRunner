@@ -3,6 +3,7 @@ require_once '../conf/const.php';
 require_once '../model/db.php';
 require_once '../model/functions.php';
 
+session_start();
 
 // ログイン済みか確認し、trueならtopページへリダイレクト
 if(is_logined() === true){

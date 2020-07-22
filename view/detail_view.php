@@ -11,6 +11,8 @@
         <li>題名：<?php print $events['event_name'];?></li>
         <li>日時：<?php print $events['date'];?></li>
         <li>場所：<?php print $events['location'];?></li>
+        <li>住所：<?php print $events['address'];?></li>
+        <li>時間：<?php print $events['time'];?></li>
         <li>概要：<?php print $events['introduction'];?></li>
 
     <form method ="POST" action ="paticipant.php">

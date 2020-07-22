@@ -19,8 +19,8 @@ function get_user($db, $user_id){
   return fetch_query($db, $sql, array($user_id));
 }
 
-// nameに一致するユーザー情報をひとつ取得する
-function get_user_by_name($db, $email){
+// emailに一致するユーザー情報をひとつ取得する●
+function get_user_by_email($db, $email){
   $sql = "
     SELECT
       user_id, 
@@ -31,10 +31,23 @@ function get_user_by_name($db, $email){
       users
     WHERE
       email = ?
-    LIMIT 1
   ";
 
   return fetch_query($db, $sql, array($email));
+}
+
+// user_idから、userの名前と紹介を取り出して表示●
+function get_user_info($db, $user_id){
+  $sql=" 
+    SELECT 
+      name, 
+      introduction
+    FROM
+      users
+    WHERE user_id =:user_id;
+  ";
+
+  return fetch_query($db, $sql, array($user_id));
 }
 
 // nameに一致するユーザー情報をひとつ取得する→falseなら弾く。OKならsessionにuser_idを返す
@@ -47,7 +60,7 @@ function login_as($db, $email, $password){
   return $user;
 }
 
-// login済みのユーザーIDとパスワードをセッションから取得して返す
+// login済みのユーザーIDとパスワードをセッションから取得して返す●
 function get_login_user($db){
   $login_user_id = get_session('user_id');
 

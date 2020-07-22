@@ -2,11 +2,22 @@
 require_once '../conf/const.php';
 require_once '../model/db.php';
 require_once '../model/functions.php';
+require_once '../model/user.php';
 
 session_start();
 
+// ログイン済みか確認し、falseならloginページへリダイレクト
+if(is_logined() === false){
+    redirect_to(LOGIN_URL);
+}
+
 // DBに接続する
 $db = get_db_connect();
+
+// login済みのユーザーIDとパスワードをセッションから取得して返す
+$user = get_login_user($db);
+// user_idを取得する
+$user_id = $user['user_id'];
 
 // それぞれの入力項目のチェック
 
@@ -25,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
         $address    = get_post('address');
         $introduction = get_post('introduction');
 
+        // eventsテーブルとlocationテーブルにデータをinsertする
         $db->beginTransaction();
         try{     
 
@@ -37,24 +49,37 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
             VALUES (:location, :address)
             ";
             
-            execute_query($db, $sql, array($location, $address));
+            //execute_query($db, $sql, array($location, $address));
+            $stmt=$db->prepare($sql);
+            $stmt->bindValue(':location', $location, PDO::PARAM_STR);
+            $stmt->bindValue(':address', $address, PDO::PARAM_STR);
+            $stmt->execute();
 
             $location_id = $db->lastInsertId('location_id');
 
             $sql = "
             INSERT INTO
                 events(
+                user_id,
                 location_id,
                 event_name,
                 introduction,
                 date,
                 time
                 )
-            VALUES(:location_id, :event_name, :introduction, :date, :time)    
+            VALUES(:user_id, :location_id, :event_name, :introduction, :date, :time)    
             ";
 
-            execute_query($db, $sql, array($location_id, $event_name, $introduction, $date, $time));
-        
+            //execute_query($db, $sql, array($user_id, $location_id, $event_name, $introduction, $date, $time));
+            $stmt=$db->prepare($sql);
+            $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+            $stmt->bindValue(':location_id', $location_id, PDO::PARAM_INT);
+            $stmt->bindValue(':event_name', $event_name, PDO::PARAM_STR);
+            $stmt->bindValue(':introduction', $introduction, PDO::PARAM_STR);
+            $stmt->bindValue(':date', $date, PDO::PARAM_STR);
+            $stmt->bindValue(':time', $time, PDO::PARAM_STR);          
+            $stmt->execute();
+
             $db->commit();
 
         } catch (PDOException $e){

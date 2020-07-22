@@ -13,7 +13,7 @@
           <a class="nav-link" href="<?php print(HISTORY_URL);?>">イベントを探す</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php print(CART_URL);?>">マイページ</a>
+          <a class="nav-link" href="<?php print(MYPAGE_URL);?>">マイページ</a>
         </li>
 
         <li class="nav-item">

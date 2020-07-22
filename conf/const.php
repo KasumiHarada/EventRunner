@@ -28,6 +28,7 @@ define('ADMIN_URL', '/admin.php');
 define('HISTORY_URL', '/history.php');
 define('DETAIL_URL', '/purchase_detail.php');
 define('CREATE_EVENT_URL', '/create_event.php');
+define('MYPAGE_URL', '/mypage.php');
 
 define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');
 define('REGEXP_POSITIVE_INTEGER', '/\A([1-9][0-9]*|0)\z/');
