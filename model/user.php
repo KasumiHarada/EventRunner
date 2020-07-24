@@ -41,6 +41,7 @@ function get_user_info($db, $user_id){
   $sql=" 
     SELECT 
       name, 
+      img,
       introduction
     FROM
       users
@@ -49,6 +50,35 @@ function get_user_info($db, $user_id){
 
   return fetch_query($db, $sql, array($user_id));
 }
+
+// insert文でpaticipantsテーブルに追加●
+function insert_paticipants($db, $user_id, $event_id){
+  
+  $sql="
+  INSERT INTO
+    paticipants(
+    user_id,
+    event_id
+    )
+    VALUES(
+    :user_id,
+    :event_id
+    )
+  ";
+
+  execute_query($db, $sql, array($user_id, $event_id));
+
+}
+
+// // バリデーション後問題なければ、regist_item_transaction関数に進む
+// function regist_item($db, $name, $price, $stock, $status, $image){
+//   $filename = get_upload_filename($image);
+//   if(validate_item($name, $price, $stock, $filename, $status) === false){
+//     return false;
+//   }
+//   return regist_item_transaction($db, $name, $price, $stock, $status, $image, $filename);
+// }
+
 
 // nameに一致するユーザー情報をひとつ取得する→falseなら弾く。OKならsessionにuser_idを返す
 function login_as($db, $email, $password){

@@ -44,6 +44,10 @@
                     <input type="text" name="address" class="form-control" value="<?php print $_SESSION['address'];?>"/>
                 </div>
                 <div class="form-group">
+                    <lavel for="capacity">定員</lavel>
+                    <input type="text" name="capacity" class="form-control">
+                </div>
+                <div class="form-group">
                     <lavel for="introduction">イベントの情報</lavel>
                     <textarea type="text" name="introduction" class="form-control"><?php print $_SESSION['introduction'];?></textarea>
                 </div>

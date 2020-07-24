@@ -6,7 +6,8 @@ function get_paticipants($db, $event_id){
       SELECT 
         events.event_id,
         paticipants.user_id,
-        users.name
+        users.name,
+        users.user_id
       FROM events LEFT OUTER JOIN paticipants ON events.event_id = paticipants.event_id
       JOIN users ON paticipants.user_id = users.user_id
       WHERE events.event_id =:event_id;
@@ -24,6 +25,7 @@ function get_event_info_detail($db, $event_id){
         events.event_name,
         events.date,
         events.time,
+        events.capacity,
         events.introduction,
         location.location,
         location.address

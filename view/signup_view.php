@@ -30,7 +30,7 @@
         <input type="email" name="email" id="email" class="form-control">
       </div>
         <label for="image">写真: </label>
-        <input type="file" name="new_image" id="image">
+        <input type="file" name="new_img" id="image">
 
       <input type="submit" value="登録" class="btn btn-block btn-primary">
     </form>
