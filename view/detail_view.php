@@ -14,11 +14,21 @@
         <li>住所：<?php print $events['address'];?></li>
         <li>時間：<?php print $events['time'];?></li>
         <li>概要：<?php print $events['introduction'];?></li>
+        <li>定員：<?php print $events['capacity'];?>名</li>
 
     <form method ="POST" action ="paticipant.php">
+    <?php foreach ($paticipants as $paticipant){ ?>
+        <?php $user = $paticipant['user_id'];?>
+        
+        <?php if (isset($paticipant['user_id'])){?>
+
+    
+        <?php print $paticipant['user_id'];} ?>
+        <?php } ?>
         <input type="submit" value="参加する" class="btn btn-primary">
         <input type="hidden" name="event_id" value="<?php print $events['event_id'];?>">        
     </form>
+    
     <h2>参加者</h2>
     <?php foreach ($paticipants as $paticipant){ ?>
         <li><?php print $paticipant['name'];?></li>

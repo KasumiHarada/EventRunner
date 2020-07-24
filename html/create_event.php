@@ -3,6 +3,7 @@ require_once '../conf/const.php';
 require_once '../model/db.php';
 require_once '../model/functions.php';
 require_once '../model/user.php';
+require_once '../model/event.php';
 
 session_start();
 
@@ -35,7 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
         $location   = get_post('location');
         $address    = get_post('address');
         $introduction = get_post('introduction');
+        $capacity   = get_post('capacity');
 
+        // validate_event($event_name);
+
+        
         // eventsテーブルとlocationテーブルにデータをinsertする
         $db->beginTransaction();
         try{     
@@ -64,10 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
                 location_id,
                 event_name,
                 introduction,
+                capacity,
                 date,
                 time
                 )
-            VALUES(:user_id, :location_id, :event_name, :introduction, :date, :time)    
+            VALUES(:user_id, :location_id, :event_name, :introduction, :capacity, :date, :time)    
             ";
 
             //execute_query($db, $sql, array($user_id, $location_id, $event_name, $introduction, $date, $time));
@@ -76,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
             $stmt->bindValue(':location_id', $location_id, PDO::PARAM_INT);
             $stmt->bindValue(':event_name', $event_name, PDO::PARAM_STR);
             $stmt->bindValue(':introduction', $introduction, PDO::PARAM_STR);
+            $stmt->bindValue(':capacity', $capacity, PDO::PARAM_INT);        
             $stmt->bindValue(':date', $date, PDO::PARAM_STR);
             $stmt->bindValue(':time', $time, PDO::PARAM_STR);          
             $stmt->execute();

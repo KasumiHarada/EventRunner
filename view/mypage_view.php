@@ -11,16 +11,14 @@
     <h1>マイページ</h1>
     <p>お名前：<?php print $user['name'];?></p>
     <p>自己紹介：<?php print $user['introduction'];?></p>
+    <p><img src="<?php print $img_dir. $user['img'];?>" width=200 height =100></p>
     <h4>参加予定のイベント</h4>
     <?php foreach ($events as $event){;?>
-      <li><?php print $event['event_name'];?></li>
+      <li>
+      <a href="detail.php?event_id=<?php print $event['event_id'];?>"><?php print $event['event_name'];?></a>
+      </li>
     <?php } ?>
     <h4>主催予定のイベント</h4>
-
-
- 
-
-
 
   <table class="table">
   <thead>
@@ -32,7 +30,6 @@
       <th scope="col">場所</th>
       <th scope="col">概要</th>
       <th scope="col">定員</th>
-
     </tr>
   </thead>
   <tbody>
@@ -44,7 +41,13 @@
         <td><?php print $hostEvent['time'];?></td>
         <td><?php print $hostEvent['location'];?></td>
         <td><?php print $hostEvent['introduction'];?></td>
-        <td><?//php print $hostEvent[''];?></td>
+        <td>
+          <form method="POST" action="">
+            <input type="text" size="3" value="<?php print $hostEvent['capacity'];?>">名
+            <input type="hidden" value="<?php print $hostEvent['event_id'];?>">
+            <input type="submit" value="変更">
+          </form>
+        </td>
       </tr>
     <?php }?>  
   </tbody>

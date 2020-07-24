@@ -7,7 +7,7 @@ define('VIEW_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../view/');
 define('IMAGE_PATH', '/assets/images/');
 define('STYLESHEET_PATH', '/assets/css/');
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );
-
+$img_dir    ='./assets/images/'; // アップロードした画像ファイルの保存ディレクトリ
 define('DB_HOST', 'mysql');
 define('DB_NAME', 'eventrunner');
 define('DB_USER', 'testuser');
@@ -29,6 +29,7 @@ define('HISTORY_URL', '/history.php');
 define('DETAIL_URL', '/purchase_detail.php');
 define('CREATE_EVENT_URL', '/create_event.php');
 define('MYPAGE_URL', '/mypage.php');
+define('SEARCH_URL', '/events.php');
 
 define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');
 define('REGEXP_POSITIVE_INTEGER', '/\A([1-9][0-9]*|0)\z/');
@@ -42,8 +43,8 @@ define('USER_PASSWORD_LENGTH_MAX', 100);
 define('USER_TYPE_ADMIN', 1); // 管理者
 define('USER_TYPE_NORMAL', 2); // 一般ユーザー
 
-define('ITEM_NAME_LENGTH_MIN', 1);
-define('ITEM_NAME_LENGTH_MAX', 100);
+define('EVENT_NAME_LENGTH_MIN', 1);
+define('EVENT_NAME_LENGTH_MAX', 30);
 
 define('ITEM_STATUS_OPEN', 1);
 define('ITEM_STATUS_CLOSE', 0);

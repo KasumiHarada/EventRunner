@@ -20,12 +20,10 @@ $user_id = $_SESSION['user_id'];
 // userの名前と紹介を取り出して表示user.php
 $user = get_user_info($db, $user_id);
 
-// 参加予定のイベントをDBから取り出して表示
-$events = get_join_events($db, $user_id);
+// login済みのuser_idをセッションから取得して変数に格納
+$user = get_login_user($db);
 
-// 主催予定のイベントをDBから取り出して表示event.php
-$hostEvents = get_host_events($db, $user_id);
+// DBからイベント情報を取り出し$eventsに格納 event.php
+$events = get_event_info($db);
 
-// 参加履歴をDBから取り出して表示
-
-include_once VIEW_PATH . 'mypage_view.php';
+include_once '../view/events_view.php';
