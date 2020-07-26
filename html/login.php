@@ -5,9 +5,10 @@ require_once '../model/functions.php';
 
 session_start();
 
+
 // ログイン済みか確認し、trueならtopページへリダイレクト
 if(is_logined() === true){
-    redirect_to(HOME_URL);
+  redirect_to(HOME_URL);
 }
 
 include_once('../view/login_view.php');  

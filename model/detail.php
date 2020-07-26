@@ -7,7 +7,8 @@ function get_paticipants($db, $event_id){
         events.event_id,
         paticipants.user_id,
         users.name,
-        users.user_id
+        users.user_id,
+        users.img
       FROM events LEFT OUTER JOIN paticipants ON events.event_id = paticipants.event_id
       JOIN users ON paticipants.user_id = users.user_id
       WHERE events.event_id =:event_id;

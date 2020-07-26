@@ -33,12 +33,15 @@ define('SEARCH_URL', '/events.php');
 
 define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');
 define('REGEXP_POSITIVE_INTEGER', '/\A([1-9][0-9]*|0)\z/');
+define('REGEXP_EMAIL', '/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/iD'); // email
 
 
-define('USER_NAME_LENGTH_MIN', 6);
-define('USER_NAME_LENGTH_MAX', 100);
-define('USER_PASSWORD_LENGTH_MIN', 6);
+define('USER_NAME_LENGTH_MIN', 1);
+define('USER_NAME_LENGTH_MAX', 10);
+define('USER_PASSWORD_LENGTH_MIN', 8);
 define('USER_PASSWORD_LENGTH_MAX', 100);
+define('INTRODUCTION_LENGTH_MIN', 1);
+define('INTRODUCTION_LENGTH_MAX', 100);
 
 define('USER_TYPE_ADMIN', 1); // 管理者
 define('USER_TYPE_NORMAL', 2); // 一般ユーザー

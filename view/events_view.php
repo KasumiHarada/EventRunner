@@ -6,12 +6,12 @@
 </head>
 <body>
     <?php include VIEW_PATH . 'templates/header_logined.php'; ?>
-    <?php include VIEW_PATH . 'templates/messages.php'; ?>
+    <?php include 'templates/messages.php'; ?>
     <h1>イベントを探す</h1>
     <div class ="container">
         <div class="row">
             <?php foreach($events as $event){?>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"><?php print $event['event_name'];?></h5>
