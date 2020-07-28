@@ -6,26 +6,19 @@
 </head>
 <body>
 <?php include VIEW_PATH . 'templates/header_logined.php'; ?>
-<?php include VIEW_PATH . 'templates/messages.php'; ?>
+
 <h1>イベント登録ページ</h1>
 
 <?php //if ($mode === 'input'){ ?>
 <?php //|| count ($err_msg)>0?>
     <!--入力画面のページ-->
     <div class ="container">
+    <?php include VIEW_PATH . 'templates/messages.php'; ?>
         <div class="contact_confirm">
             <form method="post" action="create_event.php" class="signup_form mx-auto">
                 <div class="form-group">
                     <lavel for="event_name">題名</lavel>
                     <input type="text" name="event_name" class="form-control" value="<?php print $_SESSION['event_name'];?>"/>
-                </div>
-                <div class="form-group">
-                    <lavel for="name">代表者名</lavel>
-                    <input type="text" name="name" placeholder="山田　花子" class="form-control" value="<?php print $_SESSION['name'];?>"/>
-                </div>
-                <div class="form-group">
-                    <lavel for="email">代表のメールアドレス</lavel>
-                    <input type="email" name="email" class="form-control" value="<?php print $_SESSION['email'];?>"/>
                 </div>
                 <div class="form-group">
                     <lavel for="date">開催日</lavel>
@@ -48,8 +41,8 @@
                     <input type="text" name="capacity" class="form-control">
                 </div>
                 <div class="form-group">
-                    <lavel for="introduction">イベントの情報</lavel>
-                    <textarea type="text" name="introduction" class="form-control"><?php print $_SESSION['introduction'];?></textarea>
+                    <lavel for="event_info">イベントの情報</lavel>
+                    <textarea type="text" name="event_info" class="form-control"><?php print $_SESSION['event_info'];?></textarea>
                 </div>
                 
                 <div class="button">

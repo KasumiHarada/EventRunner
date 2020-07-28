@@ -27,13 +27,13 @@ function get_post($name){
   return '';
 }
 
-// 商品画像のnameを取得する？？？？？？
-function get_file($name){
-  if(isset($_FILES[$name]) === true){
-    return $_FILES[$name];
-  };
-  return array();
-}
+// // 商品画像のnameを取得する？？？？？？
+// function get_file($name){
+//   if(isset($_FILES[$name]) === true){
+//     return $_FILES[$name];
+//   };
+//   return array();
+// }
 
 // 名前がログイン済みの名前かチェック。
 function get_session($name){
@@ -72,6 +72,7 @@ function set_message($message){
   $_SESSION['__messages'][] = $message;
 }
 
+
 // get_session関数で、名前がログイン済みの名前かチェック
 function get_messages(){
   $messages = get_session('__messages');
@@ -82,7 +83,7 @@ function get_messages(){
   return $messages;
 }
 
-// get_session関数でユーザーIDを返す
+// get_session関数でユーザーIDを返す●
 function is_logined(){
   return get_session('user_id') !== '';
 }
