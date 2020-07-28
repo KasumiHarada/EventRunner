@@ -19,6 +19,7 @@ $db = get_db_connect();
 $user = get_login_user($db);
 // user_idを取得する
 $user_id = $user['user_id'];
+$name = $user['name'];
 
 // それぞれの入力項目のチェック
 
@@ -29,18 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
         
         // post送信されたデータをそれぞれ変数に格納
         $event_name = get_post('event_name');
-        $name       = get_post('name');
         $email      = get_post('email');
         $date       = get_post('date');
         $time       = get_post('time');
         $location   = get_post('location');
         $address    = get_post('address');
-        $introduction = get_post('introduction');
+        $event_info = get_post('event_info');
         $capacity   = get_post('capacity');
 
-        // validate_event($event_name);
-
-        
+        // 入力項目を全てチェック
+        if(validate_event($event_name, $date, $time, $location, $address, $event_info, $capacity)===false){
+            redirect_to('create_event.php');
+        }
         // eventsテーブルとlocationテーブルにデータをinsertする
         $db->beginTransaction();
         try{     
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
                 date,
                 time
                 )
-            VALUES(:user_id, :location_id, :event_name, :introduction, :capacity, :date, :time)    
+            VALUES(:user_id, :location_id, :event_name, :event_info, :capacity, :date, :time)    
             ";
 
             //execute_query($db, $sql, array($user_id, $location_id, $event_name, $introduction, $date, $time));
@@ -81,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
             $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->bindValue(':location_id', $location_id, PDO::PARAM_INT);
             $stmt->bindValue(':event_name', $event_name, PDO::PARAM_STR);
-            $stmt->bindValue(':introduction', $introduction, PDO::PARAM_STR);
+            $stmt->bindValue(':event_info', $event_info, PDO::PARAM_STR);
             $stmt->bindValue(':capacity', $capacity, PDO::PARAM_INT);        
             $stmt->bindValue(':date', $date, PDO::PARAM_STR);
             $stmt->bindValue(':time', $time, PDO::PARAM_STR);          
@@ -90,16 +91,15 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
             $db->commit();
 
         } catch (PDOException $e){
-            print 'できない'.$e->getMessage();
+            //print 'できない'.$e->getMessage();
             // ロールバック処理
             $db->rollback();
             // 例外をスロー
             throw $e;
+            redirect_to('CREATE_EVENT_URL');
         }
         
         set_message('イベントを登録しました。');
-     
-    // それぞれバリデーションが必要
     
 }    
 

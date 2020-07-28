@@ -15,17 +15,14 @@ if(is_logined() === true){
 $email    = get_post('email');
 $password = get_post('password');
 
-
-
-
 // DBに接続する
 $db = get_db_connect();
 
 // emailに一致するユーザを取り出す user.php
 $user = get_user_by_email($db, $email);
 
-// メールアドレスが登録済みだったら
-if (isset ($user['email'])){
+// メールアドレスが登録済みでかつ空送信でなければ
+if (isset ($user['email']) && $email !== '' && $password !==''){
         
     // 入力されたパスワードとハッシュ化されたパスワードの検証
     if (password_verify($password, $user['password'])){
@@ -43,5 +40,6 @@ if (isset ($user['email'])){
 } else {
     set_error('ユーザー名またはパスワードが違います。');
 }// isset($user)おわり 
+
 
 redirect_to(HOME_URL);

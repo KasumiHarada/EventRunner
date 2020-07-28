@@ -48,7 +48,7 @@
         <?php }?>
         <h2>コメント一覧</h2>
         <div class="form-group">
-        <form method="POST" action="">
+        <form method="POST" action="comment.php">
             <input type="text" name="comment" size="60">
             <input type="submit" value="送信" class="btn btn-primary">
             <input type="hidden" name="action" value="comment">  

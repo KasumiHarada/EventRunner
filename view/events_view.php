@@ -8,7 +8,18 @@
     <?php include VIEW_PATH . 'templates/header_logined.php'; ?>
     <?php include 'templates/messages.php'; ?>
     <h1>イベントを探す</h1>
-    <div class ="container">
+    <div class ="container">  
+    <div class="float-right">
+        <form method="GET" action ="events.php">
+        <select name="sort">
+            <option value="new" <?php if ($_SESSION['sort']=== 'new'){print 'selected';}?>>新着順</option>
+            <option value="lower"<?php if ($_SESSION['sort']=== 'lower'){print 'selected';}?>>定員の少ない順</option>
+            <option value="higher"<?php if ($_SESSION['sort']=== 'higher'){print 'selected';}?>>定員の多い順</option>
+        </select>
+        <input type="submit" name="sort_button" value="並べ替え">
+        </form>
+  　</div>
+    　　<h2>イベント一覧</h2>
         <div class="row">
             <?php foreach($events as $event){?>
                 <div class="col-sm-3">

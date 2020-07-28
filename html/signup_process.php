@@ -61,6 +61,10 @@ $user = get_user_by_email($db, $email);
 if (!isset ($user['email'])){
 
   if (insert_user($db, $name, $email, $password, $new_img_filename, $introduction)){
+    if (validate_user_info($name, $introduction, $email, $password, $new_img_filename) ===false){
+        return false;
+    }
+    
     set_message('ユーザー登録が完了しました。');
     //login_as($db, $name, $password);   
     redirect_to(HOME_URL);
