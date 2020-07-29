@@ -1,12 +1,13 @@
 <?php 
-// 参加予定のイベントをDBから取り出して表示●
+// 参加予定のイベントをDBから取り出して表示
 function get_join_events($db, $user_id){
     $sql="
       SELECT 
         users.user_id, 
         paticipants.paticipant_id,
         events.event_name,
-        events.event_id
+        events.event_id,
+        events.date
       FROM users LEFT OUTER JOIN paticipants ON users.user_id = paticipants.user_id
       JOIN events ON paticipants.event_id =events.event_id
       WHERE users.user_id = :user_id
@@ -14,7 +15,7 @@ function get_join_events($db, $user_id){
     return fetch_all_query($db, $sql, array($user_id));
 }
 
-// 主催予定のイベントをDBから取り出して表示●
+// 主催予定のイベントをDBから取り出して表示
 function get_host_events($db, $user_id){
 
     $sql ="
@@ -35,7 +36,7 @@ function get_host_events($db, $user_id){
     return fetch_all_query($db, $sql, array($user_id));
 }
 
-// イベント情報を取り出す（select文）●
+// イベント情報を取り出す（select文）
 function get_event_info($db){
   $sql ="
     SELECT
@@ -49,9 +50,11 @@ function get_event_info($db){
   ";
    
   return fetch_all_query($db, $sql);
+
+  
 }
 
-// 商品をソートして表示する（新着・安い順・高い順）
+// 商品をソートして表示する（新着・少ない順・多い順）
 function get_events_sort($db){
   $order_by ='';
   $array=array();
@@ -80,7 +83,7 @@ function get_events_sort($db){
   return fetch_all_query($db, $sql);
 }
 
-// 入力された値がそれぞれ適切な値かを確認する●
+// 入力された値がそれぞれ適切な値かを確認する
 function validate_event($event_name, $date, $time, $location, $address, $event_info, $capacity){
   $is_valid_event_name = is_valid_event_name($event_name);
   $is_valid_date = is_valid_date($date);
@@ -100,7 +103,7 @@ function validate_event($event_name, $date, $time, $location, $address, $event_i
 
 }
 
-// 題名をチェック。1文字〜30文字以内。●
+// 題名をチェック。1文字〜30文字以内。
 function is_valid_event_name($event_name){
   $is_valid = true;
   if(is_valid_length($event_name, EVENT_NAME_LENGTH_MIN, EVENT_NAME_LENGTH_MAX) === false){
@@ -110,7 +113,7 @@ function is_valid_event_name($event_name){
   return $is_valid;
 }
 
-// ときの入力チェックをする●
+// 日にちの入力チェックをする
 function is_valid_date($date){
   $is_valid = true;
   if($date === ''){
@@ -120,7 +123,7 @@ function is_valid_date($date){
   return $is_valid;
 }
 
-// 時間の入力チェックをする●
+// 時間の入力チェックをする
 function is_valid_time($time){
   $is_valid = true;
   if($time === ''){
@@ -130,7 +133,7 @@ function is_valid_time($time){
   return $is_valid;
 }
 
-// locationの文字数と文字列をチェックし結果をtrueかfalseで返す●
+// locationの文字数と文字列をチェックし結果をtrueかfalseで返す
 function is_valid_location($location) {
   $is_valid = true;
   if(is_valid_length($location, EVENT_NAME_LENGTH_MIN, EVENT_NAME_LENGTH_MAX) === false){
@@ -140,7 +143,7 @@ function is_valid_location($location) {
   return $is_valid;
 }
 
-// 住所の文字数と文字列をチェックし結果をtrueかfalseで返す●
+// 住所の文字数と文字列をチェックし結果をtrueかfalseで返す
 function is_valid_address($address) {
   $is_valid = true;
   if(is_valid_length($address, USER_NAME_LENGTH_MIN, USER_NAME_LENGTH_MAX) === false){
@@ -150,7 +153,7 @@ function is_valid_address($address) {
   return $is_valid;
 }
 
-// 定員の文字数と文字列をチェックし結果をtrueかfalseで返す●
+// 定員の文字数と文字列をチェックし結果をtrueかfalseで返す
 function is_valid_capacity($capacity) {
   $is_valid = true;
   if(is_valid_length($capacity, REGEXP_POSITIVE_INTEGER) === false){
@@ -160,7 +163,7 @@ function is_valid_capacity($capacity) {
   return $is_valid;
 }
 
-// イベントの情報の文字数と文字列をチェックし結果をtrueかfalseで返す●
+// イベントの情報の文字数と文字列をチェックし結果をtrueかfalseで返す
 function is_valid_event_info($event_info) {
   $is_valid = true;
   if(is_valid_length($event_info, INTRODUCTION_LENGTH_MIN, INTRODUCTION_LENGTH_MAX) === false){

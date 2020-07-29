@@ -1,9 +1,8 @@
 <?php
 require_once '../conf/const.php';
-require_once '../model/functions.php';
-require_once '../model/event.php';
-require_once '../model/user.php';
-require_once '../model/detail.php';
+require_once MODEL_PATH.'functions.php';
+require_once MODEL_PATH.'user.php';
+require_once MODEL_PATH.'event.php';
 
 session_start();
 
@@ -25,7 +24,5 @@ $events = get_join_events($db, $user_id);
 
 // 主催予定のイベントをDBから取り出して表示event.php
 $hostEvents = get_host_events($db, $user_id);
-
-// 参加履歴をDBから取り出して表示
 
 include_once VIEW_PATH . 'mypage_view.php';

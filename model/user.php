@@ -125,26 +125,22 @@ function get_login_user($db){
   return get_user($db, $login_user_id);
 }
 
-// 送信されたユーザー情報に問題なければ、insert_user関数でユーザー情報をDBに登録する
-function regist_user($db, $name, $password, $password_confirmation) {
-  if( is_valid_user($name, $password, $password_confirmation) === false){
-    return false;
-  }
+// // 送信されたユーザー情報に問題なければ、insert_user関数でユーザー情報をDBに登録する
+// function regist_user($db, $name, $password, $password_confirmation) {
+//   if( is_valid_user($name, $password, $password_confirmation) === false){
+//     return false;
+//   }
   
-  return insert_user($db, $name, $password);
-}
+//   return insert_user($db, $name, $password);
+// }
 
-// user のtypeを返す(admin:1、user:2）
-function is_admin($user){
-  return $user['type'] === USER_TYPE_ADMIN;
-}
 
-function is_valid_user($name, $password, $password_confirmation){
-  // 短絡評価を避けるため一旦代入。
-  $is_valid_user_name = is_valid_user_name($name);
-  $is_valid_password = is_valid_password($password, $password_confirmation);
-  return $is_valid_user_name && $is_valid_password ;
-}
+// function is_valid_user($name, $password, $password_confirmation){
+//   // 短絡評価を避けるため一旦代入。
+//   $is_valid_user_name = is_valid_user_name($name);
+//   $is_valid_password = is_valid_password($password, $password_confirmation);
+//   return $is_valid_user_name && $is_valid_password ;
+// }
 
 // 会員登録で入力された値をチェック●
 function validate_user_info($name, $introduction, $email, $password, $new_img_filename){

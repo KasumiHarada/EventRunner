@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <?php include '../view/templates/head.php';?>
+    <?php include VIEW_PATH . 'templates/head.php';?>
     <title>イベント登録ページ</title>
 </head>
 <body>
@@ -10,7 +10,6 @@
 <h1>イベント登録ページ</h1>
 
 <?php //if ($mode === 'input'){ ?>
-<?php //|| count ($err_msg)>0?>
     <!--入力画面のページ-->
     <div class ="container">
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
@@ -80,4 +79,5 @@
     <!-- <p class="send_message">イベントを作成しました。</p> -->
 <?php //} ?>
 </body>
+<?php include VIEW_PATH . 'templates/footer_logined.php'; ?>
 </html>
