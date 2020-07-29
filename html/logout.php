@@ -1,6 +1,6 @@
 <?php
 require_once '../conf/const.php';
-require_once '../model/functions.php';
+require_once MODEL_PATH.'functions.php';
 
 // ログアウト処理
 session_start();
@@ -15,4 +15,3 @@ setcookie(session_name(), '', time() - 42000,
 session_destroy();
 
 redirect_to(LOGIN_URL);
-

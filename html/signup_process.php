@@ -1,8 +1,8 @@
 <?php
 require_once '../conf/const.php';
-require_once '../model/db.php';
-require_once '../model/functions.php';
-require_once '../model/user.php';
+require_once MODEL_PATH.'db.php';
+require_once MODEL_PATH.'functions.php';
+require_once MODEL_PATH.'user.php';
 ////
 $new_img_filename =''; //アップロードした画像の新しいファイルネーム
 ///

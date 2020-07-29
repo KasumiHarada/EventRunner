@@ -20,5 +20,4 @@ $user = get_login_user($db);
 // DBからイベント情報を取り出し$eventsに格納 event.php
 $events = get_event_info($db);
 
-
-include_once '../view/index_view.php';
+include_once VIEW_PATH .'index_view.php';

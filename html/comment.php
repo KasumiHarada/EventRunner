@@ -1,9 +1,8 @@
 <?php
 require_once '../conf/const.php';
-require_once '../model/db.php';
-require_once '../model/functions.php';
-require_once '../model/user.php';
-require_once '../model/event.php';
+require_once MODEL_PATH.'db.php';
+require_once MODEL_PATH.'functions.php';
+require_once MODEL_PATH.'user.php';
 
 session_start();
 
@@ -21,11 +20,4 @@ $user = get_login_user($db);
 // post送信されたコメントを変数に格納
 $comment = get_post('comment');
 
-try{
-    $sql ="INSERT INTO comments (user_id, event_id, comment)VALUES(:user_id, :event_id, :comment)";
-
-} catch (PDOException $e){
-    print 'だめ'.$e->getMessage();
-}
-
-include_once('../view/detail_view.php');  
+include_once(VIEW_PATH .'detail_view.php');  

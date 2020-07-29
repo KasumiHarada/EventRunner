@@ -4,6 +4,7 @@ require_once '../model/functions.php';
 require_once '../model/event.php';
 require_once '../model/detail.php';
 require_once '../model/user.php';
+require_once '../model/comment.php';
 
 session_start();
 
@@ -12,6 +13,7 @@ $db = get_db_connect();
 
 // ログイン済みのユーザー情報を取得
 $user = get_login_user($db);
+$user_id = $user['user_id'];
 
 // post送信されたevent_idを取得
 $event_id = get_get('event_id');
@@ -22,5 +24,22 @@ $events = get_event_info_detail($db, $event_id);
 // 参加者を取り出すdetail.php
 $paticipants = get_paticipants($db, $event_id);
 
+// post送信されたコメントを変数に格納
+$comment = get_post('comment');
 
-include_once '../view/detail_view.php';
+// // 適切に入力されていたら、DBへコメントを登録する
+// if(isset($comment) && is_valid_comment($comment)){
+//     insert_comments($db, $user_id, $event_id, $comment);
+// } 
+
+if ($_SERVER['REQUEST_METHOD']==='POST'){
+    if(isset($comment) && is_valid_comment($comment)!==false){
+        insert_comments($db, $user_id, $event_id, $comment);
+    
+    }  
+}
+
+// DBからevent_idに一致するコメントを全て表示
+$comments = get_comments($db,$event_id);
+
+include_once (VIEW_PATH .'detail_view.php');

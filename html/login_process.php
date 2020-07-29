@@ -1,8 +1,8 @@
 <?php
 require_once '../conf/const.php';
-require_once '../model/db.php';
-require_once '../model/functions.php';
-require_once '../model/user.php';
+require_once MODEL_PATH.'db.php';
+require_once MODEL_PATH.'functions.php';
+require_once MODEL_PATH.'user.php';
 
 session_start();
 
@@ -40,6 +40,5 @@ if (isset ($user['email']) && $email !== '' && $password !==''){
 } else {
     set_error('ユーザー名またはパスワードが違います。');
 }// isset($user)おわり 
-
 
 redirect_to(HOME_URL);

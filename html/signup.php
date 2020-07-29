@@ -1,6 +1,7 @@
 <?php
 require_once '../conf/const.php';
-require_once '../model/functions.php';
+require_once MODEL_PATH.'db.php';
+require_once MODEL_PATH.'functions.php';
 
 session_start();
 

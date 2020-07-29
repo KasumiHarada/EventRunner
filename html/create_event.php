@@ -103,5 +103,5 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
     
 }    
 
-include_once('../view/create_event_view.php');  
+include_once(VIEW_PATH .'create_event_view.php');  
         

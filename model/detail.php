@@ -17,7 +17,7 @@ function get_paticipants($db, $event_id){
     return fetch_all_query($db, $sql, array($event_id));
 }  
 
-// DBからイベント情報（詳細）を取り出す●
+// DBからイベント情報（詳細）を取り出す
 function get_event_info_detail($db, $event_id){
 
     $sql ="
@@ -37,4 +37,10 @@ function get_event_info_detail($db, $event_id){
       ";
   
     return fetch_query($db, $sql, array($event_id));
+
+    // // URL操作で他の情報に飛べないようにする
+    // if($events[0]['event_id']!==$event_id){
+    // redirect_to(HOME_URL);
+    // exit;
+    // }
 }  
