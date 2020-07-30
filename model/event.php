@@ -11,6 +11,7 @@ function get_join_events($db, $user_id){
       FROM users LEFT OUTER JOIN paticipants ON users.user_id = paticipants.user_id
       JOIN events ON paticipants.event_id =events.event_id
       WHERE users.user_id = :user_id
+      ORDER BY events.date
     "; 
     return fetch_all_query($db, $sql, array($user_id));
 }

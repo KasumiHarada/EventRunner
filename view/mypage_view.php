@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <?php include VIEW_PATH . 'templates/head.php'; ?>
   <title>マイページ</title>
+  <?php include VIEW_PATH . 'templates/head.php'; ?>
 </head>
 <body>
 <?php include VIEW_PATH . 'templates/header_logined.php'; ?>
-  <div class="container">
-    <h1>マイページ</h1>
-    <p>お名前：<?php print $user['name'];?></p>
-    <p>自己紹介：<?php print $user['introduction'];?></p>   
-    <p><img src="<?php print $img_dir. $user['img'];?>" width=200 height =100></p>
-    
-    <h4>参加予定のイベント</h4>
+<div class="container">
+  <div class ="row">
+    <div class="col-sm-5">
+      <h2>プロフィール</h2>
+      <p>自己紹介</p>
+      <div class="card" style="width:400px">
+        <img class="card-img-top" src="<?php print $img_dir. $user['img'];?>" alt="img" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title"><?php print $user['name'];?></h4>
+          <p class="card-text"><?php print $user['introduction'];?></p>
+          <a href="#" class="btn btn-primary">See Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-7">
+      <h2>Accordion Example</h2>
+      
+      <h4>参加予定のイベント</h4>
       <?php foreach ($events as $event){;?>
         <?php if(strtotime($event['date']) > strtotime(NOW_DATE)){ ?>
           <li><a href="detail.php?event_id=<?php print $event['event_id'];?>"><?php print $event['event_name'];?></a></li>
         <?php } ?>
       <?php } // foreachおわり?>
-    <h4>参加履歴</h4>
+     
+      <h4>参加履歴</h4>
       <?php foreach ($events as $event){;?>
         <?php if(strtotime($event['date']) < strtotime(NOW_DATE)){?>
           <li><a href="detail.php?event_id=<?php print $event['event_id'];?>"><?php print $event['event_name'];?></a></li>
         <?php } ?>
       <?php } // foreachおわり?>
+      </div>
+
+
+  </div>
 
   <h4>主催予定のイベント</h4>
   <table class="table">
@@ -57,8 +74,12 @@
       </tr>
     <?php }?>  
   </tbody>
-</table>
-  </div>
+　</table>
+</div>
+
+
+  
+    
 </body>
 <?php include VIEW_PATH . 'templates/footer_logined.php'; ?>
-</html>    
+</html>   

@@ -1,9 +1,5 @@
 <footer>
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
-
-  <p class="text-center"><small>Copyright&copy;KasumiHarada all Rights Reserved.</small></p>
-
-
-    
-  </nav>
+  <div class="jumbotron text-center" style="margin-bottom:0">
+   <p class="text-center"><small>Copyright&copy;KasumiHarada all Rights Reserved.</small></p>
+  </div>
 </footer>

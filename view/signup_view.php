@@ -32,7 +32,7 @@
         <label for="image">写真: </label>
         <input type="file" name="new_img" id="image">
 
-      <input type="submit" value="登録" class="btn btn-block btn-primary">
+      <input type="submit" value="登録" class="btn btn-block btn-info">
     </form>
   </div>
 </body>
