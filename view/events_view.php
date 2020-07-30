@@ -22,19 +22,22 @@
     　　<h2>イベント一覧</h2>
         <div class="row">
             <?php foreach($events as $event){?>
+
                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title"><?php print h($event['event_name']);?></h4>
-                            <p class="card-text"><?php print h($event['location']);?></p>
-                            <p class="card-text">定員：<?php print h($event['capacity']);?>名</p>
+                  <div class ="mt-5">
+                    <div class="card">                  
+                      <div class="card-body">
+                        <h4 class="card-title"><?php print h($event['event_name']);?></h4>
+                        <p class="card-text"><?php print h($event['location']);?></p>
+                        <p class="card-text">定員：<?php print h($event['capacity']);?>名</p>
                             <form method ="GET" action="detail.php">
-                                <input type="submit" class="btn btn-primary" value="詳細">
+                                <input type="submit" class="btn btn-info" value="詳細">
                                 <input type="hidden" name="event_id" value="<?php print $event['event_id'];?>">
                             </form>
-                        </div>
+                      </div> 
                     </div>
-                </div>
+                  </div>
+                </div>   
             <?php } ?>
         </div>  
     </div>

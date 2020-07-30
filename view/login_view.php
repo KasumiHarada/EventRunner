@@ -20,7 +20,7 @@
         <label for="password">パスワード: </label>
         <input type="password" name="password" id="password" class="form-control">
       </div>
-      <input type="submit" value="ログイン" class="btn btn-block btn-primary">
+      <input type="submit" value="ログイン" class="btn btn-block btn-info">
       <input type="hidden" name="token" value="<?php print $_SESSION['token'];?>">
     </form>
   </div>

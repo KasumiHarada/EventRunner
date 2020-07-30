@@ -27,19 +27,17 @@ $paticipants = get_paticipants($db, $event_id);
 // post送信されたコメントを変数に格納
 $comment = get_post('comment');
 
-// // 適切に入力されていたら、DBへコメントを登録する
-// if(isset($comment) && is_valid_comment($comment)){
-//     insert_comments($db, $user_id, $event_id, $comment);
-// } 
-
+// コメントがpost送信された場合
 if ($_SERVER['REQUEST_METHOD']==='POST'){
     if(isset($comment) && is_valid_comment($comment)!==false){
         insert_comments($db, $user_id, $event_id, $comment);
-    
     }  
 }
 
 // DBからevent_idに一致するコメントを全て表示
 $comments = get_comments($db,$event_id);
+
+// 既に、参加者として登録されているかどうかチェック
+$isset_paticipant = isset_paticipant($db, $user_id, $event_id);
 
 include_once (VIEW_PATH .'detail_view.php');

@@ -23,6 +23,7 @@ function get_event_info_detail($db, $event_id){
     $sql ="
       SELECT
         events.event_id,
+        events.user_id,
         events.event_name,
         events.date,
         events.time,
@@ -39,8 +40,24 @@ function get_event_info_detail($db, $event_id){
     return fetch_query($db, $sql, array($event_id));
 
     // // URL操作で他の情報に飛べないようにする
-    // if($events[0]['event_id']!==$event_id){
-    // redirect_to(HOME_URL);
+    // if($events[2]['user_id']!==$user_id){
+    // redirect_to(SEARCH_URL);
     // exit;
     // }
 }  
+
+// すでに参加者として登録済みかチェックする
+function isset_paticipant($db, $user_id, $event_id){
+
+  $sql ="
+    SELECT 
+      user_id 
+    FROM
+      paticipants
+    WHERE user_id = :user_id 
+    AND event_id = :event_id
+  ";
+
+  return fetch_query($db, $sql, array($user_id, $event_id));
+
+}

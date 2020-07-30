@@ -12,44 +12,46 @@
 <?php //if ($mode === 'input'){ ?>
     <!--入力画面のページ-->
     <div class ="container">
-    <?php include VIEW_PATH . 'templates/messages.php'; ?>
-        <div class="contact_confirm">
-            <form method="post" action="create_event.php" class="signup_form mx-auto">
-                <div class="form-group">
-                    <lavel for="event_name">題名</lavel>
-                    <input type="text" name="event_name" class="form-control" value="<?php print $_SESSION['event_name'];?>"/>
-                </div>
-                <div class="form-group">
-                    <lavel for="date">開催日</lavel>
-                    <input type="date" name="date" class="form-control" value="<?php print $_SESSION['date'];?>"/>
-                </div>
-                <div class="form-group">
-                    <lavel for="time">開催時間</lavel>
-                    <input type="time" name="time" class="form-control" value="<?php print $_SESSION['time'];?>"/>
-                </div>
-                <div class="form-group">
-                    <lavel for="location">開催場所</lavel>
-                    <input type="text" name="location" class="form-control" value="<?php print $_SESSION['location'];?>"/>
-                </div>
-                <div class="form-group">
-                    <lavel for="address">住所</lavel>
-                    <input type="text" name="address" class="form-control" value="<?php print $_SESSION['address'];?>"/>
-                </div>
-                <div class="form-group">
-                    <lavel for="capacity">定員</lavel>
-                    <input type="text" name="capacity" class="form-control">
-                </div>
-                <div class="form-group">
-                    <lavel for="event_info">イベントの情報</lavel>
-                    <textarea type="text" name="event_info" class="form-control"><?php print $_SESSION['event_info'];?></textarea>
-                </div>
-                
-                <div class="button">
-                    <input type="submit" name="send" value="確認" class="btn btn-block btn-primary">
-                    <input type="hidden" name="action" value="send">
-                </div>
-            </form>
-        </div>
+        <div class="w-75 bg-light">
+        <?php include VIEW_PATH . 'templates/messages.php'; ?>
+            <div class="contact_confirm">
+                <form method="post" action="create_event.php" class="signup_form mx-auto">
+                    <div class="form-group">
+                        <lavel for="event_name">題名</lavel>
+                        <input type="text" name="event_name" class="form-control" value="<?php print $_SESSION['event_name'];?>"/>
+                    </div>
+                    <div class="form-group">
+                        <lavel for="date">開催日</lavel>
+                        <input type="date" name="date" class="form-control" value="<?php print $_SESSION['date'];?>"/>
+                    </div>
+                    <div class="form-group">
+                        <lavel for="time">開催時間</lavel>
+                        <input type="time" name="time" class="form-control" value="<?php print $_SESSION['time'];?>"/>
+                    </div>
+                    <div class="form-group">
+                        <lavel for="location">開催場所</lavel>
+                        <input type="text" name="location" class="form-control" value="<?php print $_SESSION['location'];?>"/>
+                    </div>
+                    <div class="form-group">
+                        <lavel for="address">住所</lavel>
+                        <input type="text" name="address" class="form-control" value="<?php print $_SESSION['address'];?>"/>
+                    </div>
+                    <div class="form-group">
+                        <lavel for="capacity">定員</lavel>
+                        <input type="text" name="capacity" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <lavel for="event_info">イベントの情報</lavel>
+                        <textarea type="text" name="event_info" class="form-control"><?php print $_SESSION['event_info'];?></textarea>
+                    </div>
+                    
+                    <div class="button">
+                        <input type="submit" name="send" value="確認" class="btn btn-block btn-info">
+                        <input type="hidden" name="action" value="send">
+                    </div>
+                </form>
+            </div>
+        </div>    
     </div>
 <?php //} else if ($mode ==='confirm'){ ?>
 <?php //  && count ($err_msg)===0?>

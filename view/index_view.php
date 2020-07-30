@@ -1,28 +1,72 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <?php include VIEW_PATH . 'templates/head.php';?>
-    <title>トップページ</title>
+  <title>EventRunner</title>
+  <?php include VIEW_PATH . 'templates/head.php'; ?>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
 </head>
 <body>
-<?php include VIEW_PATH . 'templates/header_logined.php'; ?>
-<?php include 'templates/messages.php'; ?>
-<div class ="container">
-    <h1>EventRunnerについて</h1> 
-    <img src="../assets/images/workshop_img.jpg" alt="ワークショップの写真" width="350" height="250">
-    <img src="../assets/images/volunteer.jpg" alt="ボランテイアの写真" width="350" height="250"> 
-    <h2>使い方</h2> 
-  
-        <h3>イベントを主催する</h3>
-        <p>イベント情報を入力し、イベントを主催しよう！</p>
-    
-        <h3>イベントを探す</h3>
-        <p>イベントを探すから、あなたに必要なイベントを検索することができます</p>
 
-        <h3>イベントを管理する</h3>
-        <p>マイページでは、参加予定・主催予定のイベントが確認できます</p>
-
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>EventRunner</h1>
+  <p>イベントを主催・参加を管理するアプリケーションです</p> 
 </div>
+<?php include VIEW_PATH . 'templates/header_logined.php'; ?>
+
+<?php include VIEW_PATH . 'templates/messages.php'; ?>
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>このサイトについて</h2>
+      <h5>イベント管理アプリ</h5>
+      <div class="fakeimg"><img src="../assets/images/workshop_img.jpg" alt="ワークショップの写真" width="350" height="200"></div>
+      <p>開発者は、地域のボランテイア団体に所属し活動していました。所属する団体でのイベントの管理や参加表明など、SNSを用いて行っておりました。</p>
+      <p>個人で、情報収集ができ、かつ、参加イベントの管理が行えるプラットフォームがあればいいなぁと思い、開発してみることにしました。</p>
+      <p>行事の情報収集や参加表明などができるプラットフォームとしてお使いください。</p>
+      <h3>Some Links</h3>
+      <p>各種SNSのアカウント</p>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/KasumiHarada/EventRunner">GitHub</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://qiita.com/hasumi0001">Qiita</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/hasumi0001">Twitter</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.facebook.com/kasumih1">Facebook</a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8">
+      <h2>イベントを主催する</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg"><img src="../assets/images/volunteer.jpg" alt="ボランテイアの写真" width="350" height="200"></div>
+      <style>
+      img {
+  width: 100%;
+
+  object-fit: cover;
+}
+</style>
+      <p>イベントを主催ページから、必要項目を入力し、イベントを開催することができます。</p>
+      <br>
+      <h2>イベントに参加する</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg"><img src="../assets/images/paper.jpg" alt="子供の写真" width="350" height="200"></div>
+      <p>イベントページから、興味があるイベントの情報を取得することができます。「参加」ボタンをクリックで、簡単に参加登録をすることができます。</p>
+    </div>
+  </div>
+</div>
+
 </body>
 <?php include VIEW_PATH . 'templates/footer_logined.php'; ?>
 </html>
