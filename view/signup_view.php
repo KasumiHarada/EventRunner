@@ -9,7 +9,6 @@
   <?php include VIEW_PATH . 'templates/header.php'; ?>
   <div class="container">
     <h1>ユーザー登録</h1>
-
     <?php include 'templates/messages.php'; ?>
 
     <form method="post" action="signup_process.php" enctype= "multipart/form-data" class="signup_form mx-auto">

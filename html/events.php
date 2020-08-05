@@ -22,9 +22,6 @@ $user = get_user_info($db, $user_id);
 // login済みのuser_idをセッションから取得して変数に格納
 $user = get_login_user($db);
 
-// // DBからイベント情報を取り出し$eventsに格納 event.php
-// $events = get_event_info($db);
-
 // get送信された並べ替えの機能を取得してsessionに格納
 $sort = get_get('sort');
 $_SESSION['sort'] = $sort;

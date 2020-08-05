@@ -21,8 +21,15 @@ $db = get_db_connect();
 // emailに一致するユーザを取り出す user.php
 $user = get_user_by_email($db, $email);
 
+// sessionのtokenとpost（hidden）送信されたtokenを比較して問題なければ処理を続ける
+if (isset($_POST['token']) ===false && $_POST['token'] !== $_SESSION['token']){
+    // 不正な処理が行われたからsession情報消去
+    redirect_to(LOGIN_URL);
+    $_SESSION = array();
+    exit;
+
 // メールアドレスが登録済みでかつ空送信でなければ
-if (isset ($user['email']) && $email !== '' && $password !==''){
+} else if (isset ($user['email']) && $email !== '' && $password !==''){
         
     // 入力されたパスワードとハッシュ化されたパスワードの検証
     if (password_verify($password, $user['password'])){

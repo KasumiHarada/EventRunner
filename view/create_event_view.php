@@ -18,23 +18,23 @@
                 <form method="post" action="create_event.php" class="signup_form mx-auto">
                     <div class="form-group">
                         <lavel for="event_name">題名</lavel>
-                        <input type="text" name="event_name" class="form-control" value="<?php print $_SESSION['event_name'];?>"/>
+                        <input type="text" name="event_name" class="form-control" />
                     </div>
                     <div class="form-group">
                         <lavel for="date">開催日</lavel>
-                        <input type="date" name="date" class="form-control" value="<?php print $_SESSION['date'];?>"/>
+                        <input type="date" name="date" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <lavel for="time">開催時間</lavel>
-                        <input type="time" name="time" class="form-control" value="<?php print $_SESSION['time'];?>"/>
+                        <input type="time" name="time" class="form-control" />
                     </div>
                     <div class="form-group">
                         <lavel for="location">開催場所</lavel>
-                        <input type="text" name="location" class="form-control" value="<?php print $_SESSION['location'];?>"/>
+                        <input type="text" name="location" class="form-control" />
                     </div>
                     <div class="form-group">
                         <lavel for="address">住所</lavel>
-                        <input type="text" name="address" class="form-control" value="<?php print $_SESSION['address'];?>"/>
+                        <input type="text" name="address" class="form-control" >
                     </div>
                     <div class="form-group">
                         <lavel for="capacity">定員</lavel>
@@ -42,11 +42,11 @@
                     </div>
                     <div class="form-group">
                         <lavel for="event_info">イベントの情報</lavel>
-                        <textarea type="text" name="event_info" class="form-control"><?php print $_SESSION['event_info'];?></textarea>
+                        <textarea type="text" name="event_info" class="form-control"></textarea>
                     </div>
                     
                     <div class="button">
-                        <input type="submit" name="send" value="確認" class="btn btn-block btn-info">
+                        <input type="submit" name="send" value="送信" class="btn btn-block btn-info">
                         <input type="hidden" name="action" value="send">
                     </div>
                 </form>

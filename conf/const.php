@@ -5,7 +5,12 @@ define('VIEW_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../view/');
 
 define('STYLESHEET_PATH', '/assets/css/');
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );
-$img_dir    ='./assets/images/'; // アップロードした画像ファイルの保存ディレクトリ
+$img_dir ='./assets/images/'; // アップロードした画像ファイルの保存ディレクトリ
+
+// define('DB_HOST', 'localhost');
+// define('DB_NAME', 'eventrunner');
+// define('DB_USER', 'root');
+// define('DB_PASS', 'v76FkiUts');
 
 define('DB_HOST', 'mysql');
 define('DB_NAME', 'eventrunner');
@@ -16,11 +21,11 @@ define('DB_CHARSET', 'utf8');
 define('HOME_URL', '/index.php');
 define('DETAIL_URL', '/detail.php');
 define('SIGNUP_URL', '/signup.php');
-define('LOGIN_URL', '/login.php');
+define('LOGIN_URL', '/login.php'); 
 define('LOGOUT_URL', '/logout.php');
-define('HOME_URL', '/index.php');
+define('HOME_URL', '/index.php');  // 編集
 define('HISTORY_URL', '/history.php');
-define('DETAIL_URL', '/purchase_detail.php');
+define('DETAIL_URL', '/purchase_detail.php'); // 編集
 define('CREATE_EVENT_URL', '/create_event.php');
 define('MYPAGE_URL', '/mypage.php');
 define('SEARCH_URL', '/events.php');
