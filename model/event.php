@@ -147,8 +147,8 @@ function is_valid_location($location) {
 // 住所の文字数と文字列をチェックし結果をtrueかfalseで返す
 function is_valid_address($address) {
   $is_valid = true;
-  if(is_valid_length($address, USER_NAME_LENGTH_MIN, USER_NAME_LENGTH_MAX) === false){
-    set_error('住所は'. USER_NAME_LENGTH_MIN . '文字以上、' . USER_NAME_LENGTH_MAX . '文字以内にしてください。');
+  if(is_valid_length($address, INTRODUCTION_LENGTH_MIN, INTRODUCTION_LENGTH_MAX) === false){
+    set_error('住所は'. INTRODUCTION_LENGTH_MIN . '文字以上、' . INTRODUCTION_LENGTH_MAX . '文字以内にしてください。');
     $is_valid = false;
   }
   return $is_valid;

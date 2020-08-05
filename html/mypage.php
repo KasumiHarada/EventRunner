@@ -6,6 +6,9 @@ require_once MODEL_PATH.'event.php';
 
 session_start();
 
+// iframeを禁止
+header('X-FRAME-OPTIONS: DENY');
+
 // ログイン済みか確認し、falseならloginページへリダイレクト
 if(is_logined() === false){
   redirect_to(LOGIN_URL);

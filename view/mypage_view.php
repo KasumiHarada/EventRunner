@@ -16,7 +16,6 @@
         <div class="card-body">
           <h4 class="card-title"><?php print $user['name'];?></h4>
           <p class="card-text"><?php print $user['introduction'];?></p>
-          <a href="#" class="btn btn-primary">See Profile</a>
         </div>
       </div>
     </div>

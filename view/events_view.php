@@ -19,10 +19,11 @@
         <input type="submit" name="sort_button" value="並べ替え">
         </form>
   　</div>
-    　　<h2>イベント一覧</h2>
+    　　<h3>イベント一覧</h3>
         <div class="row">
+        
             <?php foreach($events as $event){?>
-
+              <?php if(strtotime($event['date']) > strtotime(NOW_DATE)){ ?>
                 <div class="col-sm-3">
                   <div class ="mt-5">
                     <div class="card">                  
@@ -37,7 +38,8 @@
                       </div> 
                     </div>
                   </div>
-                </div>   
+                </div>  
+              <?php } ?>   
             <?php } ?>
         </div>  
     </div>

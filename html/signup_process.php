@@ -3,9 +3,7 @@ require_once '../conf/const.php';
 require_once MODEL_PATH.'db.php';
 require_once MODEL_PATH.'functions.php';
 require_once MODEL_PATH.'user.php';
-////
 $new_img_filename =''; //アップロードした画像の新しいファイルネーム
-///
 
 session_start();
 
@@ -42,12 +40,11 @@ if (is_uploaded_file($_FILES['new_img']['tmp_name']) === TRUE) {
       set_error('ファイルアップロードに失敗しました。再度お試しください。');
     }
   } else {
-    set_erro('ファイル形式が異なります。画像ファイルはJPEGのみ利用可能です。');
+    set_error('ファイル形式が異なります。画像ファイルはJPEGのみ利用可能です。');
   }
 } else {
   set_error('ファイルを選択してください');
 }
-
 
 // 各項目の入力チェック
 if (validate_user_info($name, $introduction, $email, $password, $new_img_filename)){
@@ -58,19 +55,15 @@ if (validate_user_info($name, $introduction, $email, $password, $new_img_filenam
 $user = get_user_by_email($db, $email);
 
 // エラーがなしで、かつ、同じ名前のユーザが存在しなければ、登録する
-if (!isset ($user['email'])){
+if (!isset ($user['email']) && validate_user_info($name, $introduction, $email, $password, $new_img_filename) !== false){
 
   if (insert_user($db, $name, $email, $password, $new_img_filename, $introduction)){
-    if (validate_user_info($name, $introduction, $email, $password, $new_img_filename) ===false){
-        return false;
-    }
-    
     set_message('ユーザー登録が完了しました。');
-    //login_as($db, $name, $password);   
     redirect_to(HOME_URL);
   }
   
 } else if (isset ($user['email'])) {
     set_error('既に登録済のメールアドレスです。他のメールアドレスを登録してください。');
     redirect_to(SIGNUP_URL);
-} // (!isset ($result) おわり
+
+}// (!isset ($result) おわり
